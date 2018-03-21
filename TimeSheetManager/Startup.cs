@@ -33,7 +33,6 @@ namespace TimeSheetManager
             {
                 app.UseDeveloperExceptionPage();
             }
-
             app.UseMvc();
         }
     }

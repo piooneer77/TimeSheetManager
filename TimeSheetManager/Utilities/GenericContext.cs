@@ -38,7 +38,7 @@ namespace TimeSheetManager.Utilities
                         .HasMany(obj => obj.timeSheetExportHistories)
                         .WithOne(obj => obj.user)
                         .HasForeignKey(obj => obj.userId);
-
+            
             // Project Relations
             modelBuilder.Entity<Project>()
                         .HasMany(obj => obj.projectTimelineHistories)
@@ -53,7 +53,13 @@ namespace TimeSheetManager.Utilities
             modelBuilder.Entity<TimeSheetExportHistory>()
                         .HasOne(obj => obj.savedFile)
                         .WithOne(obj => obj.timeSheetExportHistory);
-            // User Relations
+        }
+        #endregion
+
+        #region
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseMySQL("server=localhost;database=library;user=root;password=0909");
         }
         #endregion
 

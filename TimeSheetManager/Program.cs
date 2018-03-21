@@ -12,6 +12,8 @@ namespace TimeSheetManager
 {
     public class Program
     {
+        public static IConfiguration Configuration { get; set; }
+
         public static void Main(string[] args)
         {
             BuildWebHost(args).Run();

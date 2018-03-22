@@ -19,7 +19,7 @@ namespace TimeSheetManager.Utilities
         #region Constructors
         public TimeSheetGenericRepository()
         {
-            databaseContext = new GenericContext();
+            //databaseContext = new GenericContext();
         }
         #endregion
 

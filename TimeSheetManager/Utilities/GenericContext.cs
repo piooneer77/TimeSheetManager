@@ -7,6 +7,14 @@ namespace TimeSheetManager.Utilities
 {
     public class GenericContext : DbContext
     {
+
+        #region Constructor
+        public GenericContext(DbContextOptions<GenericContext> Options):base(Options)
+        {
+            
+        }
+        #endregion 
+
         #region Member Variables
         public DbSet<User> Users { get; set; }
         public DbSet<Project> Projects { get; set; }

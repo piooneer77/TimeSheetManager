@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore;
+﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using TimeSheetManager.Utilities;
 
 namespace TimeSheetManager
 {
     public class Program
     {
-        public static IConfiguration Configuration { get; set; }
-
         public static void Main(string[] args)
         {
+            using (var context = new GenericContext())
+            {
+                context.Database.EnsureCreated();
+            }
             BuildWebHost(args).Run();
         }
 

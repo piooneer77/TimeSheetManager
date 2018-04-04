@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 namespace TimeSheetManager.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : ControllerBase
+    public class ValuesController : Controller
     {
-        // GET api/values
+        // GET: api/values
         [HttpGet]
         public IEnumerable<string> Get()
         {
@@ -20,21 +22,19 @@ namespace TimeSheetManager.Controllers
         [HttpGet("{id}")]
         public string Get(int id)
         {
-            return "value";
+            return $"{id}";
         }
 
         // POST api/values
         [HttpPost]
-        public String Post([FromBody]string value)
+        public void Post([FromBody]string value)
         {
-            return value;
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public String Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]string value)
         {
-            return "Post Hit";
         }
 
         // DELETE api/values/5

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Configuration;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using TimeSheetManager.Models;
 
 namespace TimeSheetManager.Utilities
@@ -9,10 +7,7 @@ namespace TimeSheetManager.Utilities
     {
 
         #region Constructor
-        public GenericContext(DbContextOptions<GenericContext> Options):base(Options)
-        {
-            
-        }
+
         #endregion 
 
         #region Member Variables
@@ -60,15 +55,14 @@ namespace TimeSheetManager.Utilities
             // TimeSheetExportHistory Relations
             modelBuilder.Entity<TimeSheetExportHistory>()
                         .HasOne(obj => obj.savedFile)
-                        .WithOne(obj => obj.timeSheetExportHistory);
+                        .WithOne(obj => obj.timeSheetExportHistory)
+                        .HasForeignKey<SavedFile>(obj => obj.exportHistoryId);
         }
         #endregion
 
-        #region
+        #region 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseMySQL("server=localhost;database=library;user=root;password=0909");
-        }
+            => optionsBuilder.UseMySql(@"Server=localhost;database=test;uid=root;pwd=0909;");
         #endregion
 
     }
